@@ -1,2 +1,2 @@
-# FInal_Project
+# Final_Project
 Alliyah &amp; Jason
