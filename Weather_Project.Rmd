@@ -3,7 +3,8 @@ title: "Weather"
 author: "Alliyah Galvan & Jason Nguyen"
 date: "March 3, 2020"
 output:
-  html_document:
+  html_document: 
+    keep_md: yes
     theme: spacelab
     toc: yes
     toc_float: yes
@@ -11,6 +12,8 @@ output:
 
 ```{r}
 library(tidyverse)
+library(naniar)
+library(skimr)
 ```
 
 ```{r}
@@ -36,6 +39,33 @@ new_factor<- c(1:5,26)
 new_numeric<- c(6:25)
 weather[,new_factor] <- lapply(weather[,new_factor], as.factor)
 weather[,new_numeric] <- lapply(weather[,new_numeric], as.numeric)
-lapply(weather, class)
+lapply(weather, class) #changing classes
 ```
 
+
+## The Average Temperature of Each City in 2016.
+```{r}
+weather %>% 
+  filter(year=="2016") %>% 
+  select(city, avg_temp,) %>% 
+  group_by(city) %>%
+  summarize(yearly_avg_temp=mean(avg_temp))
+```
+
+```{r}
+weather %>% 
+  filter(year=="2017") %>% 
+  select(city, avg_temp,) %>% 
+  group_by(city) %>%
+  summarize(yearly_avg_temp=mean(avg_temp))
+```
+
+```{r}
+weather %>%
+  group_by(city) %>%
+  summarize(yearly_avg_temp=mean(avg_temp)) %>% 
+  ggplot(aes(x=city, yearly_avg_temp)) +
+  geom_bar(stat = "identity")
+```
+
+# make a shiny app, (copy ledford)
