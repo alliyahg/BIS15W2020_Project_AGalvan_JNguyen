@@ -1,7 +1,7 @@
 ---
 title: "Weather"
 author: "Alliyah Galvan & Jason Nguyen"
-date: "March 3, 2020"
+date: "March 8, 2020"
 output:
   html_document: 
     keep_md: yes
@@ -41,7 +41,6 @@ weather[,new_factor] <- lapply(weather[,new_factor], as.factor)
 weather[,new_numeric] <- lapply(weather[,new_numeric], as.numeric)
 lapply(weather, class) #changing classes
 ```
-
 
 ## The Average Temperature of Each City in 2016.
 ```{r}

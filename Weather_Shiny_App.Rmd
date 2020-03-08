@@ -1,0 +1,70 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+---
+title: "Weather"
+author: "Alliyah Galvan & Jason Nguyen"
+date: "March 8, 2020"
+output:
+  html_document: 
+    keep_md: yes
+    theme: spacelab
+    toc: yes
+    toc_float: yes
+---=
+
+```{r}
+library(tidyverse)
+library(naniar)
+library(skimr)
+library(shiny)
+library(shinydashboard)
+```
+
+```{r}
+weather <- readr::read_csv("data/weather.csv")
+```
+
+```{r}
+weather %>% 
+  select(-"X1")
+```
+
+```{r}
+new_factor<- c(1:5,26)
+new_numeric<- c(6:25)
+weather[,new_factor] <- lapply(weather[,new_factor], as.factor)
+weather[,new_numeric] <- lapply(weather[,new_numeric], as.numeric)
+lapply(weather, class) #changing classes
+```
+```{r}
+levels(weather$city)
+```
+
+
+
+```{r}
+ui <- dashboardPage(
+  dashboardHeader(title = "Weather in Certain Cities from 2016-2017"),
+  dashboardSidebar(disable = T),
+  dashboardBody(
+    fluidRow(
+      box(title = "Plot Options", width = 3,
+          radioButtons("x", "Select Year", choices = c("2016", "2017"), 
+                       selected = "2016"),
+          selectInput("y", "Select City", choices = c("Auckland", "Beijing", "Chicago"   "Mumbai", "San Diego"),
+                      selected = "Davis"),
+          selectInput("z", "Select Admit Category", choices = c("Applicants", "Admits", "Enrollees"),
+                      selected = "Applicants")
+      ), # close the first box
+      box(title = "UC Admissions", width = 7,
+          plotOutput("plot", width = "600px", height = "500px")
+      ) # close the second box
+    ) # close the row
+  ) # close the dashboard body
+) # close the ui
+
+shinyApp(ui, server)
+```
+
