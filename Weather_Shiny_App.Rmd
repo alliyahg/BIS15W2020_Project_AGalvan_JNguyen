@@ -5,7 +5,7 @@ output: html_notebook
 ---
 title: "Weather"
 author: "Alliyah Galvan & Jason Nguyen"
-date: "March 8, 2020"
+date: "March 9, 2020"
 output:
   html_document: 
     keep_md: yes
@@ -46,7 +46,6 @@ weather_temp <- weather %>%
   group_by(city, year) %>%
   summarize(Average_Temp=mean(avg_temp)) %>% 
   rename(City="city", Year="year")
-weather_temp
 ```
 
 ```{r}
@@ -74,19 +73,13 @@ weather_wind <- weather %>%
 ```
 
 ```{r}
-weather_mean <- cbind(weather_temp, weather_dewpt, weather_humidty, weather_wind)
- #combining yearly average into one table
+weather_mean <- cbind(weather_temp, weather_dewpt, weather_humidty, weather_wind) #combining yearly average into one table
 ```
 
 ```{r}
-weather_clean <- weather_mean %>% 
-  select(-c(4,6,8))
-weather_clean
-```
-
-```{r}
-weather_cleaner <- weather_clean %>% 
- pivot_longer(Average_Temp:Average_Wind,
+weather_cleaner <- weather_mean %>% 
+  select(-c(4,6,8)) %>% 
+  pivot_longer(Average_Temp:Average_Wind,
                names_to = "Measure",
                values_to = "Value")
 weather_cleaner
@@ -94,7 +87,7 @@ weather_cleaner
 
 ```{r}
 ui <- dashboardPage(
-  dashboardHeader(title = "Weather"),
+  dashboardHeader(),
   dashboardSidebar(disable = T),
   dashboardBody(
     fluidRow(
@@ -104,8 +97,8 @@ ui <- dashboardPage(
           selectInput("y", "Select Measure", choices = c("Average_Temp", "Average_Dew_Point", "Average_Humidty", "Average_Wind"),
                       selected = "Average_Temp"),
       ), # close the first box
-      box(title = "Weather", width = 7,
-          plotOutput("plot", width = "600px", height = "500px")
+      box(width =6,
+          plotOutput("plot", width = "800px", height = "600px")
       ) # close the second box
     ) # close the row
   ) # close the dashboard body
@@ -116,9 +109,15 @@ server <- function(input, output, session) {
   output$plot <- renderPlot({
     weather_cleaner %>% 
     filter(Year==input$x & Measure == input$y) %>% 
-    ggplot(aes(x=City, y=Value)) + 
-    geom_bar(stat="identity", color="black", fill="steelblue", alpha=0.6) +
-    labs(x="City", y="input$y")
+    ggplot(aes(x=City, y=Value, fill=City)) + 
+    geom_bar(stat="identity", color="black", alpha=0.6) +
+    labs(title = "Weather in Certain Cities from 2016-2017",
+        x="City", y=input$y) +
+  theme(plot.title = element_text(size = 27, face = "bold", hjust = 0.5),
+        axis.text = element_text(size = 15),
+        axis.title = element_text(size = 18),
+        legend.title = element_text(size = 18),
+        legend.text = element_text(size=15))
   })
   
    session$onSessionEnded(stopApp)
