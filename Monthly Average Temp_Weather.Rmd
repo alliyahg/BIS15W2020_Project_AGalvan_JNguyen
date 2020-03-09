@@ -1,0 +1,135 @@
+---
+title: "Monthly Averages for All Cities of Each Year"
+author: "Alliyah Galvan & Jason Nguyen"
+date: "March 8, 2020"
+output:
+  html_document: 
+    keep_md: yes
+    theme: spacelab
+    toc: yes
+    toc_float: yes
+---
+```{r}
+library(tidyverse)
+library(naniar)
+library(skimr)
+```
+
+```{r}
+weather <- readr::read_csv("data/Weather.csv")
+weather
+```
+
+```{r}
+weather %>% 
+  select(-"X1")
+```
+
+**Average Monthly Temperatures for All Cities for 2016 & 2017**
+```{r}
+weather %>% 
+  mutate_at(vars(month), as.factor) %>% 
+ filter(year== 2016) %>%
+  group_by(month, city) %>% 
+  summarize(mean_avgtemp=mean(avg_temp))  %>% 
+  ggplot(aes(x=month, y=mean_avgtemp, color=city, group=city))+
+  geom_line() +
+  geom_point(alpha=0.8)+
+  labs(title="2016 Monthly Average Temperature",
+       x= "Month",
+       y="Average Temp") +
+  theme(plot.title = element_text(size = 18, face = "bold"),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12))
+```
+
+```{r}
+weather %>% 
+  mutate_at(vars(month), as.factor) %>% 
+ filter(year== 2017) %>%
+  group_by(month, city) %>% 
+  summarize(mean_avgtemp=mean(avg_temp))  %>% 
+  ggplot(aes(x=month, y=mean_avgtemp, color=city, group=city))+
+  geom_line() +
+  geom_point(alpha=0.8)+
+  labs(title="2017 Monthly Average Temperature",
+       x= "Month",
+       y="Average Temp") +
+  theme(plot.title = element_text(size = 18, face = "bold"),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12))
+```
+
+
+**Average Monthly Dewpoints for All Cities for 2016 & 2017**
+
+```{r}
+weather %>% 
+  mutate_at(vars(month), as.factor) %>% 
+ filter(year== 2016) %>%
+  group_by(month, city) %>% 
+  summarize(mean_avgdewpt=mean(avg_dewpt))  %>% 
+  ggplot(aes(x=month, y=mean_avgdewpt, color=city, group=city))+
+  geom_line() +
+  geom_point(alpha=0.8)+
+  labs(title="2016 Monthly Average Dewpoint",
+       x= "Month",
+       y="Average Dewpoint") +
+  theme(plot.title = element_text(size = 18, face = "bold"),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12))
+```
+
+```{r}
+weather %>% 
+  mutate_at(vars(month), as.factor) %>% 
+ filter(year== 2017) %>%
+  group_by(month, city) %>% 
+  summarize(mean_avgdewpt=mean(avg_dewpt))  %>% 
+  ggplot(aes(x=month, y=mean_avgdewpt, color=city, group=city))+
+  geom_line() +
+  geom_point(alpha=0.8)+
+  labs(title="2017 Monthly Average Dewpoint",
+       x= "Month",
+       y="Average Dewpoint") +
+  theme(plot.title = element_text(size = 18, face = "bold"),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12))
+```
+
+
+**Average Monthly Humidity for All Cities for 2016 & 2017**
+```{r}
+weather %>% 
+  mutate_at(vars(month), as.factor) %>% 
+ filter(year== 2016) %>%
+  group_by(month, city) %>% 
+  summarize(mean_avghumidity=mean(avg_humidity))  %>% 
+  ggplot(aes(x=month, y=mean_avghumidity, color=city, group=city))+
+  geom_line() +
+  geom_point(alpha=0.8)+
+  labs(title="2016 Monthly Average Humidity",
+       x= "Month",
+       y="Average Humidity") +
+  theme(plot.title = element_text(size = 18, face = "bold"),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12))
+```
+
+```{r}
+weather %>% 
+  mutate_at(vars(month), as.factor) %>% 
+ filter(year== 2017) %>%
+  group_by(month, city) %>% 
+  summarize(mean_avghumidity=mean(avg_humidity))  %>% 
+  ggplot(aes(x=month, y=mean_avghumidity, color=city, group=city))+
+  geom_line() +
+  geom_point(alpha=0.8)+
+  labs(title="2017 Monthly Average Humidity",
+       x= "Month",
+       y="Average Humidity") +
+  theme(plot.title = element_text(size = 18, face = "bold"),
+        axis.text = element_text(size = 12),
+        axis.title = element_text(size = 12))
+```
+
