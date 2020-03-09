@@ -7,7 +7,7 @@
 
 City name = city 
  
-  _Cities: Auckland, Mumbai, Beijing, Chicago, and San Diego_
+   _Cities: Auckland, Mumbai, Beijing, Chicago, and San Diego_
 
 
 Date = date 
@@ -15,12 +15,12 @@ Date = date
 
 Numeric year = year
  
-  _Years: 2016 and 2017_
+   _Years: 2016 and 2017_
 
 
 Numeric month = month
   
-   _Months: January through December_
+    _Months: January through December_
 
 
 Numeric day = day
@@ -47,6 +47,6 @@ High, average, and low wind speed for the day in mph = high_wind, avg_wind, low_
 Precipitation for the day – a character vale; T means "trace amount" = precip 
 
 
-Character string naming weather events on the day = events
+Weather events on the day = events
  
-  _Events: Rain, Fog, Snow, etc._
+   _Events: Rain, Fog, Snow, etc._
