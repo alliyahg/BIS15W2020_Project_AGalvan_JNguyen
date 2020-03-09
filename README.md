@@ -5,48 +5,48 @@
 
 **Each column name is described below**
 
-city = City name.
+City name = city 
  
  -Cities: Auckland, Mumbai, Beijing, Chicago, and San Diego
 
 
-date = Date.
+Date = date 
 
 
-year = Numeric year.
+Numeric year = year
  
  -Years: 2016 and 2017
 
 
-month = Numeric month.
+Numeric month = month
   
   -Months: January through December
 
 
-day = Numeric day.
+Numeric day = day
 
 
-high_temp, avg_temp, low_temp = High, average, and low temperature for the day in degrees F.
+High, average, and low temperature for the day in degrees F = high_temp, avg_temp, low_temp 
 
 
-high_dewpt, avg_dewpt, low_dewpt = High, average, and low dew point for the day in degrees F.
+High, average, and low dew point for the day in degrees F = high_dewpt, avg_dewpt, low_dewpt
 
 
-high_humidity, avg_humidity, low_humidity = High, average, and low relative humidity.
+High, average, and low relative humidity = high_humidity, avg_humidity, low_humidity
 
 
-high_hg, avg_hg, low_hg = High, average, and low sea level pressure in inches of mercury.
+High, average, and low sea level pressure in inches of mercury = high_hg, avg_hg, low_hg 
 
 
-high_vis, avg_vis, low_vis = High, average, and low visability for the day in miles.
+High, average, and low visability for the day in miles = high_vis, avg_vis, low_vis 
 
 
-high_wind, avg_wind, low_wind = High, average, and low wind speed for the day in mph.
+High, average, and low wind speed for the day in mph = high_wind, avg_wind, low_wind
 
 
-precip = Precipitation for the day – a character vale; T means "trace amount".
+Precipitation for the day – a character vale; T means "trace amount" = precip 
 
 
-events = Character string naming weather events on the day 
+Character string naming weather events on the day = events
  
  -Events: Rain, Fog, Snow, etc.
