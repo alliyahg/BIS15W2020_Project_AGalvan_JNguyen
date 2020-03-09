@@ -15,12 +15,12 @@ Date = date
 
 Numeric year = year
  
-  Years: 2016 and 2017
+  _Years: 2016 and 2017_
 
 
 Numeric month = month
   
-   Months: January through December
+   _Months: January through December_
 
 
 Numeric day = day
@@ -49,4 +49,4 @@ Precipitation for the day – a character vale; T means "trace amount" = precip
 
 Character string naming weather events on the day = events
  
-  Events: Rain, Fog, Snow, etc.
+  _Events: Rain, Fog, Snow, etc._
