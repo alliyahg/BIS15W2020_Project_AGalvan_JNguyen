@@ -1,32 +1,78 @@
 ---
-title: "Monthly Averages for All Cities of Each Year"
+title: "Weather"
 author: "Alliyah Galvan & Jason Nguyen"
-date: "March 8, 2020"
-output:
-  html_document: 
-    keep_md: yes
-    theme: spacelab
-    toc: yes
-    toc_float: yes
+date: "March 13, 2020"
+output: ioslides_presentation
 ---
-```{r}
-library(tidyverse)
-library(naniar)
-library(skimr)
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library("skimr")
+library("tidyverse")
+library("naniar")
+library("shiny")
+library("shinydashboard")
 ```
 
-```{r}
-weather <- readr::read_csv("data/Weather.csv")
-weather
+```{r include=FALSE}
+weather <- read_csv("data/Weather.csv")
 ```
 
-```{r}
-weather %>% 
-  select(-"X1")
+```{r include=FALSE}
+new_factor<- c(1:5,26)
+new_numeric<- c(6:25)
+weather[,new_factor] <- lapply(weather[,new_factor], as.factor)
+weather[,new_numeric] <- lapply(weather[,new_numeric], as.numeric)
+lapply(weather, class) #changing classes
 ```
 
-**Average Monthly Temperatures for All Cities for 2016 & 2017**
-```{r}
+## BACKGROUND
+
+# Shiny App
+
+```{r include=FALSE}
+weather_temp <- weather %>% 
+  select(year, city, avg_temp) %>% 
+  group_by(city, year) %>%
+  summarize(Average_Temp=mean(avg_temp)) %>%
+  rename(City="city", Year="year")
+```
+
+```{r include=FALSE}
+weather_dewpt <-weather %>% 
+  select(year, city, avg_dewpt) %>% 
+  group_by(city, year) %>%
+  summarize(Average_Dew_Point=mean(avg_dewpt)) %>% 
+  select(-c("year"))
+```
+
+```{r include=FALSE}
+weather_humidty <- weather %>% 
+  select(year, city, avg_humidity) %>% 
+  group_by(city, year) %>%
+  summarize(Average_Humidty=mean(avg_humidity)) %>%
+  select(-c("year"))
+```
+
+```{r include=FALSE}
+weather_wind <- weather %>% 
+  select(year, city, avg_wind) %>% 
+  group_by(city, year) %>%
+  summarize(Average_Wind=mean(avg_wind)) %>%
+  select(-c("year"))
+```
+
+```{r results= 'hide', character}
+weather_mean <- cbind(weather_temp, weather_dewpt, weather_humidty, weather_wind) #combining yearly average into one table
+weather_cleaner <- weather_mean %>% 
+  select(-c(4,6,8)) %>% 
+  pivot_longer(Average_Temp:Average_Wind,
+               names_to = "Measure",
+               values_to = "Value")
+weather_cleaner
+```
+
+## **Average Monthly Temperatures for All Cities for 2016**
+```{r echo=FALSE}
 weather %>% 
   mutate_at(vars(month), as.factor) %>% 
  filter(year== 2016) %>%
@@ -43,7 +89,8 @@ weather %>%
         axis.title = element_text(size = 12))
 ```
 
-```{r}
+## **Average Monthly Temperatures for All Cities for 2017**
+```{r echo=FALSE}
 weather %>% 
   mutate_at(vars(month), as.factor) %>% 
  filter(year== 2017) %>%
@@ -60,10 +107,8 @@ weather %>%
         axis.title = element_text(size = 12))
 ```
 
-
-**Average Monthly Dewpoints for All Cities for 2016 & 2017**
-
-```{r}
+## **Average Monthly Dewpoints for All Cities for 2016**
+```{r echo=FALSE}
 weather %>% 
   mutate_at(vars(month), as.factor) %>% 
  filter(year== 2016) %>%
@@ -80,16 +125,8 @@ weather %>%
         axis.title = element_text(size = 12))
 ```
 
-```{r}
-weather %>% 
-  mutate_at(vars(month), as.factor) %>% 
- filter(year== 2017) %>%
-  group_by(month, city) %>% 
-  summarize(mean_avgdewpt=mean(avg_dewpt)) 
-```
-
-
-```{r}
+## **Average Monthly Dewpoints for All Cities for 2017**
+```{r echo=FALSE}
 weather %>% 
   mutate_at(vars(month), as.factor) %>% 
  filter(year== 2017) %>%
@@ -106,9 +143,8 @@ weather %>%
         axis.title = element_text(size = 12))
 ```
 
-
-**Average Monthly Humidity for All Cities for 2016 & 2017**
-```{r}
+## **Average Monthly Humidity for All Cities for 2016**
+```{r echo=FALSE}
 weather %>% 
   mutate_at(vars(month), as.factor) %>% 
  filter(year== 2016) %>%
@@ -125,7 +161,8 @@ weather %>%
         axis.title = element_text(size = 12))
 ```
 
-```{r}
+## **Average Monthly Humidity for All Cities for 2017**
+```{r echo=FALSE}
 weather %>% 
   mutate_at(vars(month), as.factor) %>% 
  filter(year== 2017) %>%
@@ -141,4 +178,3 @@ weather %>%
         axis.text = element_text(size = 12),
         axis.title = element_text(size = 12))
 ```
-
