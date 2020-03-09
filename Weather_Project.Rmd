@@ -1,7 +1,7 @@
 ---
 title: "Weather"
 author: "Alliyah Galvan & Jason Nguyen"
-date: "March 8, 2020"
+date: "March 9, 2020"
 output:
   html_document: 
     keep_md: yes
@@ -43,13 +43,6 @@ lapply(weather, class) #changing classes
 ```
 
 ## The Average Temperature of Each City in 2016.
-```{r}
-weather %>% 
-  filter(year=="2016") %>% 
-  select(city, avg_temp,) %>% 
-  group_by(city) %>%
-  summarize(yearly_avg_temp=mean(avg_temp))
-```
 
 ```{r}
 weather %>% 
@@ -68,4 +61,84 @@ weather %>%
   geom_bar(stat = "identity")
 ```
 
-# make a shiny app, (copy ledford)
+## Weather Events by City
+
+```{r}
+weather$events<- as.character(weather$events)
+weather$events[is.na(weather$events)] <- "Clear Skies"
+```
+
+```{r}
+skies <- weather %>% 
+  select(city, events)
+```
+
+```{r}
+skies %>%
+  filter(city== "Auckland") %>% 
+  ggplot(aes(x=events)) +
+  geom_bar(fill = "brown1", color="black", alpha =.5) +
+  labs(title = "Weather Events in Auckland",
+       x= "Weather Events",
+       y= "Count") +
+  theme(plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 15),)+
+  coord_flip()
+```
+
+```{r}
+skies %>%
+  filter(city== "Beijing") %>% 
+  ggplot(aes(x=events)) +
+  geom_bar(fill = "darkgoldenrod2", color="black", alpha =.5) +
+  labs(title = "Weather Events in Beijing",
+       x= "Weather Events",
+       y= "Count") +
+  theme(plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 15),)+
+  coord_flip()
+```
+
+```{r}
+skies %>%
+  filter(city== "Chicago") %>% 
+  ggplot(aes(x=events)) +
+  geom_bar(fill = "palegreen1", color="black", alpha =.5) +
+  labs(title = "Weather Events in Chicago",
+       x= "Weather Events",
+       y= "Count") +
+  theme(plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 15),)+
+  coord_flip()
+```
+
+```{r}
+skies %>%
+  filter(city== "Mumbai") %>% 
+  ggplot(aes(x=events)) +
+  geom_bar(fill = "deepskyblue", color="black", alpha =.5) +
+  labs(title = "Weather Events in Mumbai",
+       x= "Weather Events",
+       y= "Count") +
+  theme(plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 15),)+
+  coord_flip()
+```
+
+```{r}
+skies %>%
+  filter(city== "San Diego") %>% 
+  ggplot(aes(x=events)) +
+  geom_bar(fill = "magenta", color="black", alpha =.5) +
+  labs(title = "Weather Events in San D",
+       x= "Weather Events",
+       y= "Count") +
+  theme(plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 15),)+
+  coord_flip()
+```
