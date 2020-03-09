@@ -7,7 +7,7 @@
 
 City name = city 
  
-   _Cities: Auckland, Mumbai, Beijing, Chicago, and San Diego_
+   _*Cities:* Auckland, Mumbai, Beijing, Chicago, and San Diego_
 
 
 Date = date 
@@ -15,12 +15,12 @@ Date = date
 
 Numeric year = year
  
-   _Years: 2016 and 2017_
+   _*Years:* 2016 and 2017_
 
 
 Numeric month = month
   
-    _Months: January through December_
+   _*Months:* January through December_
 
 
 Numeric day = day
@@ -49,4 +49,4 @@ Precipitation for the day – a character vale; T means "trace amount" = precip
 
 Weather events on the day = events
  
-   _Events: Rain, Fog, Snow, etc._
+   _*Events:* Rain, Fog, Snow, etc._
