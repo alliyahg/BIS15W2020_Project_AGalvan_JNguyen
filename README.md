@@ -44,7 +44,7 @@ High, average, and low visability for the day in miles = high_vis, avg_vis, low_
 High, average, and low wind speed for the day in mph = high_wind, avg_wind, low_wind
 
 
-Precipitation for the day – a character vale; T means "trace amount" = precip 
+Precipitation for the day – a character value; T means "trace amount" = precip 
 
 
 Weather events on the day = events
