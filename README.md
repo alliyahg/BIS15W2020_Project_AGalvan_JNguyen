@@ -7,7 +7,7 @@
 
 City name = city 
  
-  ~Cities: Auckland, Mumbai, Beijing, Chicago, and San Diego~
+  _Cities: Auckland, Mumbai, Beijing, Chicago, and San Diego_
 
 
 Date = date 
