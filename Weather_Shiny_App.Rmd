@@ -38,32 +38,92 @@ weather[,new_factor] <- lapply(weather[,new_factor], as.factor)
 weather[,new_numeric] <- lapply(weather[,new_numeric], as.numeric)
 lapply(weather, class) #changing classes
 ```
+
+
 ```{r}
-levels(weather$city)
+weather_temp <- weather %>% 
+  select(year, city, avg_temp) %>% 
+  group_by(city, year) %>%
+  summarize(Average_Temp=mean(avg_temp)) %>% 
+  rename(City="city", Year="year")
+weather_temp
 ```
 
+```{r}
+weather_dewpt <-weather %>% 
+  select(year, city, avg_dewpt) %>% 
+  group_by(city, year) %>%
+  summarize(Average_Dew_Point=mean(avg_dewpt)) %>% 
+  select(-c("year"))
+```
 
+```{r}
+weather_humidty <- weather %>% 
+  select(year, city, avg_humidity) %>% 
+  group_by(city, year) %>%
+  summarize(Average_Humidty=mean(avg_humidity)) %>%
+  select(-c("year"))
+```
+
+```{r}
+weather_wind <- weather %>% 
+  select(year, city, avg_wind) %>% 
+  group_by(city, year) %>%
+  summarize(Average_Wind=mean(avg_wind)) %>%
+  select(-c("year"))
+```
+
+```{r}
+weather_mean <- cbind(weather_temp, weather_dewpt, weather_humidty, weather_wind)
+ #combining yearly average into one table
+```
+
+```{r}
+weather_clean <- weather_mean %>% 
+  select(-c(4,6,8))
+weather_clean
+```
+
+```{r}
+weather_cleaner <- weather_clean %>% 
+ pivot_longer(Average_Temp:Average_Wind,
+               names_to = "Measure",
+               values_to = "Value")
+weather_cleaner
+```
 
 ```{r}
 ui <- dashboardPage(
-  dashboardHeader(title = "Weather in Certain Cities from 2016-2017"),
+  dashboardHeader(title = "Weather"),
   dashboardSidebar(disable = T),
   dashboardBody(
     fluidRow(
       box(title = "Plot Options", width = 3,
           radioButtons("x", "Select Year", choices = c("2016", "2017"), 
                        selected = "2016"),
-          selectInput("y", "Select City", choices = c("Auckland", "Beijing", "Chicago"   "Mumbai", "San Diego"),
-                      selected = "Davis"),
-          selectInput("z", "Select Admit Category", choices = c("Applicants", "Admits", "Enrollees"),
-                      selected = "Applicants")
+          selectInput("y", "Select Measure", choices = c("Average_Temp", "Average_Dew_Point", "Average_Humidty", "Average_Wind"),
+                      selected = "Average_Temp"),
       ), # close the first box
-      box(title = "UC Admissions", width = 7,
+      box(title = "Weather", width = 7,
           plotOutput("plot", width = "600px", height = "500px")
       ) # close the second box
     ) # close the row
   ) # close the dashboard body
 ) # close the ui
+
+server <- function(input, output, session) {
+  
+  output$plot <- renderPlot({
+    weather_cleaner %>% 
+    filter(Year==input$x & Measure == input$y) %>% 
+    ggplot(aes(x=City, y=Value)) + 
+    geom_bar(stat="identity", color="black", fill="steelblue", alpha=0.6) +
+    labs(x="City", y="input$y")
+  })
+  
+   session$onSessionEnded(stopApp)
+  
+}
 
 shinyApp(ui, server)
 ```
