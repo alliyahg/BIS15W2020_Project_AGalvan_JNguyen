@@ -6,12 +6,15 @@
 **Each column name is described below**
 
 city = City name.
+ -Cities: Auckland, Mumbai, Beijing, Chicago, and San Diego
 
 date = Date.
 
 year = Numeric year.
+  -Years: 2016 and 2017
 
 month = Numeric month.
+  -Months: January through December
 
 day = Numeric day.
 
@@ -29,4 +32,5 @@ high_wind, avg_wind, low_wind = High, average, and low wind speed for the day in
 
 precip = Precipitation for the day – a character vale; T means "trace amount".
 
-events = Character string naming weather events on the day (Rain, Fog, Snow, etc.)
+events = Character string naming weather events on the day 
+  -Events: Rain, Fog, Snow, etc.
