@@ -6,9 +6,7 @@
 **Each column name is described below**
 
 * City name = city 
- 
- >  _*Cities:* Auckland, Mumbai, Beijing, Chicago, and San Diego_
-
+  > _*Cities:* Auckland, Beijing, Chicago, Mumbai, and San Diego_
 
 * Date = date 
 
@@ -49,4 +47,4 @@
 
 * Weather events on the day = events
  
-   _*Events:* Rain, Fog, Snow, etc._
+* _*Events:* Rain, Fog, Snow, etc._
