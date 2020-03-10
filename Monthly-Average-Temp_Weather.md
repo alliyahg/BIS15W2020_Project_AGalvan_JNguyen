@@ -15,7 +15,7 @@ library(tidyverse)
 ```
 
 ```
-## <U+2500><U+2500> Attaching packages <U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500> tidyverse 1.3.0 <U+2500><U+2500>
+## <U+2500><U+2500> Attaching packages <U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500> tidyverse 1.3.0 <U+2500><U+2500>
 ```
 
 ```
@@ -26,7 +26,7 @@ library(tidyverse)
 ```
 
 ```
-## <U+2500><U+2500> Conflicts <U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500> tidyverse_conflicts() <U+2500><U+2500>
+## <U+2500><U+2500> Conflicts <U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500> tidyverse_conflicts() <U+2500><U+2500>
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ```
@@ -204,6 +204,34 @@ weather %>%
   mutate_at(vars(month), as.factor) %>% 
  filter(year== 2017) %>%
   group_by(month, city) %>% 
+  summarize(mean_avgdewpt=mean(avg_dewpt)) 
+```
+
+```
+## # A tibble: 60 x 3
+## # Groups:   month [12]
+##    month city      mean_avgdewpt
+##    <fct> <chr>             <dbl>
+##  1 1     Auckland          56.2 
+##  2 1     Beijing            9.13
+##  3 1     Chicago           22.9 
+##  4 1     Mumbai            57.7 
+##  5 1     San Diego         44.9 
+##  6 2     Auckland          60.9 
+##  7 2     Beijing            8.61
+##  8 2     Chicago           27   
+##  9 2     Mumbai            59.2 
+## 10 2     San Diego         49.2 
+## # <U+2026> with 50 more rows
+```
+
+
+
+```r
+weather %>% 
+  mutate_at(vars(month), as.factor) %>% 
+ filter(year== 2017) %>%
+  group_by(month, city) %>% 
   summarize(mean_avgdewpt=mean(avg_dewpt))  %>% 
   ggplot(aes(x=month, y=mean_avgdewpt, color=city, group=city))+
   geom_line() +
@@ -216,7 +244,7 @@ weather %>%
         axis.title = element_text(size = 12))
 ```
 
-![](Monthly-Average-Temp_Weather_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](Monthly-Average-Temp_Weather_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
 
 
 **Average Monthly Humidity for All Cities for 2016 & 2017**
@@ -238,7 +266,7 @@ weather %>%
         axis.title = element_text(size = 12))
 ```
 
-![](Monthly-Average-Temp_Weather_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](Monthly-Average-Temp_Weather_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
 
 
 ```r
@@ -258,5 +286,5 @@ weather %>%
         axis.title = element_text(size = 12))
 ```
 
-![](Monthly-Average-Temp_Weather_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![](Monthly-Average-Temp_Weather_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 
