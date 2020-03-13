@@ -1,7 +1,7 @@
 ---
 title: "Weather"
 author: "Alliyah Galvan & Jason Nguyen"
-date: "March 3, 2020"
+date: "March 9, 2020"
 output:
   html_document: 
     keep_md: yes
@@ -16,18 +16,18 @@ library(tidyverse)
 ```
 
 ```
-## <U+2500><U+2500> Attaching packages <U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500> tidyverse 1.3.0 <U+2500><U+2500>
+## -- Attaching packages ----------------------------------------------------- tidyverse 1.3.0 --
 ```
 
 ```
-## <U+2713> ggplot2 3.2.1     <U+2713> purrr   0.3.3
-## <U+2713> tibble  2.1.3     <U+2713> dplyr   0.8.3
-## <U+2713> tidyr   1.0.0     <U+2713> stringr 1.4.0
-## <U+2713> readr   1.3.1     <U+2713> forcats 0.4.0
+## v ggplot2 3.2.1     v purrr   0.3.3
+## v tibble  2.1.3     v dplyr   0.8.4
+## v tidyr   1.0.2     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0
 ```
 
 ```
-## <U+2500><U+2500> Conflicts <U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500> tidyverse_conflicts() <U+2500><U+2500>
+## -- Conflicts -------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ```
@@ -91,17 +91,17 @@ weather
 ## # A tibble: 3,655 x 26
 ##       X1 city  date        year month   day high_temp avg_temp low_temp
 ##    <dbl> <chr> <date>     <dbl> <dbl> <dbl>     <dbl>    <dbl>    <dbl>
-##  1     1 Auck<U+2026> 2016-01-01  2016     1     1        68       65       62
-##  2     2 Auck<U+2026> 2016-01-02  2016     1     2        68       66       64
-##  3     3 Auck<U+2026> 2016-01-03  2016     1     3        77       72       66
-##  4     4 Auck<U+2026> 2016-01-04  2016     1     4        73       66       60
-##  5     5 Auck<U+2026> 2016-01-05  2016     1     5        69       62       55
-##  6     6 Auck<U+2026> 2016-01-06  2016     1     6        69       63       57
-##  7     7 Auck<U+2026> 2016-01-07  2016     1     7        71       66       60
-##  8     8 Auck<U+2026> 2016-01-08  2016     1     8        77       70       64
-##  9     9 Auck<U+2026> 2016-01-09  2016     1     9        69       66       64
-## 10    10 Auck<U+2026> 2016-01-10  2016     1    10        71       66       62
-## # <U+2026> with 3,645 more rows, and 17 more variables: high_dewpt <dbl>,
+##  1     1 Auck~ 2016-01-01  2016     1     1        68       65       62
+##  2     2 Auck~ 2016-01-02  2016     1     2        68       66       64
+##  3     3 Auck~ 2016-01-03  2016     1     3        77       72       66
+##  4     4 Auck~ 2016-01-04  2016     1     4        73       66       60
+##  5     5 Auck~ 2016-01-05  2016     1     5        69       62       55
+##  6     6 Auck~ 2016-01-06  2016     1     6        69       63       57
+##  7     7 Auck~ 2016-01-07  2016     1     7        71       66       60
+##  8     8 Auck~ 2016-01-08  2016     1     8        77       70       64
+##  9     9 Auck~ 2016-01-09  2016     1     9        69       66       64
+## 10    10 Auck~ 2016-01-10  2016     1    10        71       66       62
+## # ... with 3,645 more rows, and 17 more variables: high_dewpt <dbl>,
 ## #   avg_dewpt <dbl>, low_dewpt <dbl>, high_humidity <dbl>, avg_humidity <dbl>,
 ## #   low_humidity <dbl>, high_hg <dbl>, avg_hg <dbl>, low_hg <dbl>,
 ## #   high_vis <dbl>, avg_vis <dbl>, low_vis <dbl>, high_wind <dbl>,
@@ -118,17 +118,17 @@ weather %>%
 ## # A tibble: 3,655 x 25
 ##    city  date        year month   day high_temp avg_temp low_temp high_dewpt
 ##    <chr> <date>     <dbl> <dbl> <dbl>     <dbl>    <dbl>    <dbl>      <dbl>
-##  1 Auck<U+2026> 2016-01-01  2016     1     1        68       65       62         64
-##  2 Auck<U+2026> 2016-01-02  2016     1     2        68       66       64         64
-##  3 Auck<U+2026> 2016-01-03  2016     1     3        77       72       66         70
-##  4 Auck<U+2026> 2016-01-04  2016     1     4        73       66       60         66
-##  5 Auck<U+2026> 2016-01-05  2016     1     5        69       62       55         55
-##  6 Auck<U+2026> 2016-01-06  2016     1     6        69       63       57         54
-##  7 Auck<U+2026> 2016-01-07  2016     1     7        71       66       60         59
-##  8 Auck<U+2026> 2016-01-08  2016     1     8        77       70       64         72
-##  9 Auck<U+2026> 2016-01-09  2016     1     9        69       66       64         68
-## 10 Auck<U+2026> 2016-01-10  2016     1    10        71       66       62         63
-## # <U+2026> with 3,645 more rows, and 16 more variables: avg_dewpt <dbl>,
+##  1 Auck~ 2016-01-01  2016     1     1        68       65       62         64
+##  2 Auck~ 2016-01-02  2016     1     2        68       66       64         64
+##  3 Auck~ 2016-01-03  2016     1     3        77       72       66         70
+##  4 Auck~ 2016-01-04  2016     1     4        73       66       60         66
+##  5 Auck~ 2016-01-05  2016     1     5        69       62       55         55
+##  6 Auck~ 2016-01-06  2016     1     6        69       63       57         54
+##  7 Auck~ 2016-01-07  2016     1     7        71       66       60         59
+##  8 Auck~ 2016-01-08  2016     1     8        77       70       64         72
+##  9 Auck~ 2016-01-09  2016     1     9        69       66       64         68
+## 10 Auck~ 2016-01-10  2016     1    10        71       66       62         63
+## # ... with 3,645 more rows, and 16 more variables: avg_dewpt <dbl>,
 ## #   low_dewpt <dbl>, high_humidity <dbl>, avg_humidity <dbl>,
 ## #   low_humidity <dbl>, high_hg <dbl>, avg_hg <dbl>, low_hg <dbl>,
 ## #   high_vis <dbl>, avg_vis <dbl>, low_vis <dbl>, high_wind <dbl>,
@@ -143,32 +143,32 @@ glimpse(weather)
 ```
 ## Observations: 3,655
 ## Variables: 26
-## $ X1            <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, <U+2026>
-## $ city          <chr> "Auckland", "Auckland", "Auckland", "Auckland", "Auckla<U+2026>
-## $ date          <date> 2016-01-01, 2016-01-02, 2016-01-03, 2016-01-04, 2016-0<U+2026>
-## $ year          <dbl> 2016, 2016, 2016, 2016, 2016, 2016, 2016, 2016, 2016, 2<U+2026>
-## $ month         <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1<U+2026>
-## $ day           <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, <U+2026>
-## $ high_temp     <dbl> 68, 68, 77, 73, 69, 69, 71, 77, 69, 71, 75, 69, 71, 75,<U+2026>
-## $ avg_temp      <dbl> 65, 66, 72, 66, 62, 63, 66, 70, 66, 66, 67, 66, 66, 68,<U+2026>
-## $ low_temp      <dbl> 62, 64, 66, 60, 55, 57, 60, 64, 64, 62, 59, 62, 62, 62,<U+2026>
-## $ high_dewpt    <dbl> 64, 64, 70, 66, 55, 54, 59, 72, 68, 63, 61, 66, 61, 63,<U+2026>
-## $ avg_dewpt     <dbl> 60, 63, 67, 60, 52, 51, 54, 67, 61, 58, 58, 62, 57, 61,<U+2026>
-## $ low_dewpt     <dbl> 55, 61, 64, 54, 48, 46, 50, 59, 55, 55, 54, 59, 54, 59,<U+2026>
-## $ high_humidity <dbl> 100, 100, 100, 100, 82, 88, 83, 100, 100, 88, 94, 100, <U+2026>
-## $ avg_humidity  <dbl> 82, 94, 91, 76, 69, 65, 65, 92, 81, 76, 72, 87, 73, 80,<U+2026>
-## $ low_humidity  <dbl> 68, 88, 74, 53, 56, 46, 53, 83, 64, 64, 53, 78, 64, 65,<U+2026>
-## $ high_hg       <dbl> 30.15, 30.04, 29.80, 30.12, 30.21, 30.24, 30.24, 30.01,<U+2026>
-## $ avg_hg        <dbl> 30.09, 29.90, 29.73, 29.90, 30.14, 30.22, 30.13, 29.79,<U+2026>
-## $ low_hg        <dbl> 30.01, 29.80, 29.68, 29.77, 30.09, 30.18, 30.04, 29.62,<U+2026>
-## $ high_vis      <dbl> 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6<U+2026>
-## $ avg_vis       <dbl> 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6<U+2026>
-## $ low_vis       <dbl> 4, 1, 1, 6, 6, 6, 6, 2, 4, 6, 6, 3, 6, 6, 6, 6, 6, 2, 6<U+2026>
-## $ high_wind     <dbl> 21, 33, 18, 15, 13, 17, 22, 21, 18, 20, 17, 16, 18, 17,<U+2026>
-## $ avg_wind      <dbl> 15, 21, 12, 10, 7, 8, 12, 14, 11, 15, 10, 8, 13, 9, 7, <U+2026>
-## $ low_wind      <dbl> 28, 46, NA, NA, NA, 28, 25, 28, 29, NA, 26, NA, NA, NA,<U+2026>
-## $ precip        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0<U+2026>
-## $ events        <chr> "Rain", "Rain", "Rain", "Rain", NA, NA, "Rain", "Rain",<U+2026>
+## $ X1            <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16...
+## $ city          <chr> "Auckland", "Auckland", "Auckland", "Auckland", "Auck...
+## $ date          <date> 2016-01-01, 2016-01-02, 2016-01-03, 2016-01-04, 2016...
+## $ year          <dbl> 2016, 2016, 2016, 2016, 2016, 2016, 2016, 2016, 2016,...
+## $ month         <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
+## $ day           <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16...
+## $ high_temp     <dbl> 68, 68, 77, 73, 69, 69, 71, 77, 69, 71, 75, 69, 71, 7...
+## $ avg_temp      <dbl> 65, 66, 72, 66, 62, 63, 66, 70, 66, 66, 67, 66, 66, 6...
+## $ low_temp      <dbl> 62, 64, 66, 60, 55, 57, 60, 64, 64, 62, 59, 62, 62, 6...
+## $ high_dewpt    <dbl> 64, 64, 70, 66, 55, 54, 59, 72, 68, 63, 61, 66, 61, 6...
+## $ avg_dewpt     <dbl> 60, 63, 67, 60, 52, 51, 54, 67, 61, 58, 58, 62, 57, 6...
+## $ low_dewpt     <dbl> 55, 61, 64, 54, 48, 46, 50, 59, 55, 55, 54, 59, 54, 5...
+## $ high_humidity <dbl> 100, 100, 100, 100, 82, 88, 83, 100, 100, 88, 94, 100...
+## $ avg_humidity  <dbl> 82, 94, 91, 76, 69, 65, 65, 92, 81, 76, 72, 87, 73, 8...
+## $ low_humidity  <dbl> 68, 88, 74, 53, 56, 46, 53, 83, 64, 64, 53, 78, 64, 6...
+## $ high_hg       <dbl> 30.15, 30.04, 29.80, 30.12, 30.21, 30.24, 30.24, 30.0...
+## $ avg_hg        <dbl> 30.09, 29.90, 29.73, 29.90, 30.14, 30.22, 30.13, 29.7...
+## $ low_hg        <dbl> 30.01, 29.80, 29.68, 29.77, 30.09, 30.18, 30.04, 29.6...
+## $ high_vis      <dbl> 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,...
+## $ avg_vis       <dbl> 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,...
+## $ low_vis       <dbl> 4, 1, 1, 6, 6, 6, 6, 2, 4, 6, 6, 3, 6, 6, 6, 6, 6, 2,...
+## $ high_wind     <dbl> 21, 33, 18, 15, 13, 17, 22, 21, 18, 20, 17, 16, 18, 1...
+## $ avg_wind      <dbl> 15, 21, 12, 10, 7, 8, 12, 14, 11, 15, 10, 8, 13, 9, 7...
+## $ low_wind      <dbl> 28, 46, NA, NA, NA, 28, 25, 28, 29, NA, 26, NA, NA, N...
+## $ precip        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,...
+## $ events        <chr> "Rain", "Rain", "Rain", "Rain", NA, NA, "Rain", "Rain...
 ```
 
 
@@ -275,57 +275,101 @@ lapply(weather, class) #changing classes
 ## [1] "factor"
 ```
 
+## Weather Events by City
 
-## The Average Temperature of Each City in 2016.
 
 ```r
-weather %>% 
-  filter(year=="2016") %>% 
-  select(city, avg_temp,) %>% 
-  group_by(city) %>%
-  summarize(yearly_avg_temp=mean(avg_temp))
-```
-
-```
-## # A tibble: 5 x 2
-##   city      yearly_avg_temp
-##   <fct>               <dbl>
-## 1 Auckland             60.8
-## 2 Beijing              55.2
-## 3 Chicago              52.5
-## 4 Mumbai               80.7
-## 5 San Diego            66.6
+weather$events<- as.character(weather$events)
+weather$events[is.na(weather$events)] <- "Clear Skies"
 ```
 
 
 ```r
-weather %>% 
-  filter(year=="2017") %>% 
-  select(city, avg_temp,) %>% 
-  group_by(city) %>%
-  summarize(yearly_avg_temp=mean(avg_temp))
-```
-
-```
-## # A tibble: 5 x 2
-##   city      yearly_avg_temp
-##   <fct>               <dbl>
-## 1 Auckland             60.5
-## 2 Beijing              55.8
-## 3 Chicago              52.8
-## 4 Mumbai               81.1
-## 5 San Diego            66.5
+skies <- weather %>% 
+  select(city, events)
 ```
 
 
 ```r
-weather %>%
-  group_by(city) %>%
-  summarize(yearly_avg_temp=mean(avg_temp)) %>% 
-  ggplot(aes(x=city, yearly_avg_temp)) +
-  geom_bar(stat = "identity")
+skies %>%
+  filter(city== "Auckland") %>% 
+  ggplot(aes(x=events)) +
+  geom_bar(fill = "brown1", color="black", alpha =.5) +
+  labs(title = "Weather Events in Auckland",
+       x= "Weather Events",
+       y= "Count") +
+  theme(plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 15),)+
+  coord_flip()
 ```
 
 ![](Weather_Project_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
 
-# make a shiny app, (copy ledford)
+
+```r
+skies %>%
+  filter(city== "Beijing") %>% 
+  ggplot(aes(x=events)) +
+  geom_bar(fill = "darkgoldenrod2", color="black", alpha =.5) +
+  labs(title = "Weather Events in Beijing",
+       x= "Weather Events",
+       y= "Count") +
+  theme(plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 15),)+
+  coord_flip()
+```
+
+![](Weather_Project_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+
+
+```r
+skies %>%
+  filter(city== "Chicago") %>% 
+  ggplot(aes(x=events)) +
+  geom_bar(fill = "palegreen1", color="black", alpha =.5) +
+  labs(title = "Weather Events in Chicago",
+       x= "Weather Events",
+       y= "Count") +
+  theme(plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 15),)+
+  coord_flip()
+```
+
+![](Weather_Project_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
+
+
+```r
+skies %>%
+  filter(city== "Mumbai") %>% 
+  ggplot(aes(x=events)) +
+  geom_bar(fill = "deepskyblue", color="black", alpha =.5) +
+  labs(title = "Weather Events in Mumbai",
+       x= "Weather Events",
+       y= "Count") +
+  theme(plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 15),)+
+  coord_flip()
+```
+
+![](Weather_Project_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+
+
+```r
+skies %>%
+  filter(city== "San Diego") %>% 
+  ggplot(aes(x=events)) +
+  geom_bar(fill = "magenta", color="black", alpha =.5) +
+  labs(title = "Weather Events in San D",
+       x= "Weather Events",
+       y= "Count") +
+  theme(plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+        axis.text = element_text(size = 10),
+        axis.title = element_text(size = 15),)+
+  coord_flip()
+```
+
+![](Weather_Project_files/figure-html/unnamed-chunk-13-1.png)<!-- -->

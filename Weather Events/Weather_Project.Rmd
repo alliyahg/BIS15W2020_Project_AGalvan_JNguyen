@@ -42,25 +42,6 @@ weather[,new_numeric] <- lapply(weather[,new_numeric], as.numeric)
 lapply(weather, class) #changing classes
 ```
 
-## The Average Temperature of Each City in 2016.
-
-```{r}
-weather %>% 
-  filter(year=="2017") %>% 
-  select(city, avg_temp) %>% 
-  group_by(city) %>%
-  summarize(yearly_avg_temp=mean(avg_temp))
-```
-
-```{r}
-weather %>%
-  filter(year=="2017") %>% 
-  group_by(city) %>%
-  summarize(yearly_avg_temp=mean(avg_temp)) %>% 
-  ggplot(aes(x=city, yearly_avg_temp)) +
-  geom_bar(stat = "identity")
-```
-
 ## Weather Events by City
 
 ```{r}
