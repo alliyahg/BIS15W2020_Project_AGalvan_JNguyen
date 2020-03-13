@@ -2,12 +2,12 @@
 title: "Weather Patterns in 5 Major Cities"
 author: "Alliyah Galvan & Jason Nguyen"
 date: "March 13, 2020"
-output: ioslides_presentation
+output: 
+  ioslides_presentation: 
+    keep_md: yes
 ---
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
-library("xml2")
-library("glue")
 library("skimr")
 library("tidyverse")
 library("naniar")
