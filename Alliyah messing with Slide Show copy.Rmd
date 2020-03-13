@@ -6,9 +6,6 @@ output: ioslides_presentation
 ---
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
-install.packages("glue")
-install.packages("xml2")
-install.packages("skimr")
 library("xml2")
 library("glue")
 library("skimr")
@@ -31,18 +28,11 @@ lapply(weather, class) #changing classes
 ```
 
 ## Background | Data
-```{r eval=FALSE, include=FALSE}
-# Our data was provided by: _____________
-# The data is an average of different weather patterns collected every day from 2016-2017 in 5 major cities: >Auckland, New Zealand >Beijing, China >Chicago, USA >Mumbai, India >San Diego, USA
-# Weather patterns include: Temperature, Dewpoint, Humidity, Wind, and Weathering Events
-```
+-  <font size="4"> Our data was provided by: https://vincentarelbundock.github.io/Rdatasets/doc/mosaicData/Weather.html </font>
+- <font size="4"> The data is an average of different weather patterns collected every day from 2016-2017 in 5 major cities: >Auckland, New Zealand >Beijing, China >Chicago, USA >Mumbai, India >San Diego, USA</font>
+- <font size="4"> Weather patterns include: Temperature, Dewpoint, Humidity, Wind, and Weathering Events</font>
 
-
-# Shiny App
-```{r eval=FALSE, include=FALSE}
-# The Shiny App allows for a visual representation of the yearly comparisons between each city for temperature, dewpoint, humidity, and wind.
-# The Shiny App is present in its own file in our Repository.
-```
+## Shiny App
 
 ```{r include=FALSE}
 weather_temp <- weather %>% 
@@ -86,13 +76,10 @@ weather_cleaner <- weather_mean %>%
 weather_cleaner
 ```
 
-## **Average Monthly Temperatures for All Cities for 2016**
-```{r eval=FALSE, include=FALSE}
-# To break things down further, here is a look at the average temperature for each city in 2016.
-# It is evident that Auckland lies in the Southern Hemisphere while the other cities lie in the Northern Hemisphere.
-# Auckland increases temperature while the other cities' average temperatures decrease and vice versa.
-```
+- The Shiny App allows for a visual representation of the yearly comparisons between each city for temperature, dewpoint, humidity, and wind.
+ The Shiny App is present in its own file in our Repository.
 
+## **Average Monthly Temperatures for All Cities for 2016**
 ```{r echo=FALSE}
 weather %>% 
   mutate_at(vars(month), as.factor) %>% 
@@ -108,13 +95,19 @@ weather %>%
   theme(plot.title = element_text(size = 18, face = "bold"),
         axis.text = element_text(size = 12),
         axis.title = element_text(size = 12))
+
+png("month_all_16.png")
+plot
+dev.off()
 ```
 
+- <font size="3">To break things down further, here is a look at the average temperature for each city in 2016.</font>
+- <font size="3">It is evident that Auckland lies in the Southern Hemisphere while the other cities lie in the Northern Hemisphere.</font>
+- <font size="3">Auckland increases temperature while the other cities' average temperatures decrease and vice versa.</font>
+
 ## **Average Monthly Temperatures for All Cities for 2017**
-```{r eval=FALSE, include=FALSE}
-# Similar temperature patterns are shown in 2017 with slight fluctuations.
-# We also notice that  Mumbai has overall the highest temperature because it is closest to the equator.
-```
+- Similar temperature patterns are shown in 2017 with slight fluctuations.
+- We also notice that  Mumbai has overall the highest temperature because it is closest to the equator.
 
 ```{r echo=FALSE}
 weather %>% 
@@ -134,9 +127,7 @@ weather %>%
 ```
 
 ## **Average Monthly Dewpoints for All Cities for 2016**
-```{r eval=FALSE, include=FALSE}
-# Average dewpoint percentages show similar results to average temperatures as dewpoint is defined as the measure of how much moisture is in the air.
-```
+- Average dewpoint percentages show similar results to average temperatures as dewpoint is defined as the measure of how much moisture is in the air.
 
 ```{r echo=FALSE}
 weather %>% 
@@ -156,9 +147,7 @@ weather %>%
 ```
 
 ## **Average Monthly Dewpoints for All Cities for 2017**
-```{r eval=FALSE, include=FALSE}
-# Again here is the overall year of 2017 showing the dewpoint monthly average percentages for each of the 5 cities.
-```
+- <font size="3">Again here is the overall year of 2017 showing the dewpoint monthly average percentages for each of the 5 cities.</font>
 
 ```{r echo=FALSE}
 weather %>% 
@@ -178,9 +167,7 @@ weather %>%
 ```
 
 ## **Average Monthly Humidity for All Cities for 2016**
-```{r eval=FALSE, include=FALSE}
-# Humidity varies from the two previous graphs. As seen, Auckland has a consistently high humidity percentage while the other cities have greater fluctuation. This is also in fact due to the fact that Auckland lies closest to the equator and does not vary in weather patterns as much.
-```
+- Humidity varies from the two previous graphs. As seen, Auckland has a consistently high humidity percentage while the other cities have greater fluctuation. This is also in fact due to the fact that Auckland lies closest to the equator and does not vary in weather patterns as much.
 
 ```{r echo=FALSE}
 weather %>% 
@@ -200,9 +187,7 @@ weather %>%
 ```
 
 ## **Average Monthly Humidity for All Cities for 2017**
-```{r}
-# In 2017, the overall humidity greatly resembles that of 2016 for these major cities.
-```
+- In 2017, the overall humidity greatly resembles that of 2016 for these major cities.
 
 ```{r echo=FALSE}
 weather %>% 
@@ -222,9 +207,8 @@ weather %>%
 ```
 
 ## **Auckland Weather Events**
-```{r}
-# Auckland's weathering events are a bit of a surprise; rain takes precedence over clear skies.
-```
+- Auckland's weathering events are a bit of a surprise; rain takes precedence over clear skies.
+
 
 ```{r include=FALSE}
 weather$events<- as.character(weather$events)
@@ -248,9 +232,8 @@ skies %>%
 ```
 
 ## **Beijing Weather Events**
-```{r}
-# Beijing's full of days with clear skies within these two years. Rain trails along as the next common weathering event.
-```
+- Beijing's full of days with clear skies within these two years. Rain trails along as the next common weathering event.
+
 
 ```{r echo=FALSE}
 skies %>%
@@ -267,9 +250,8 @@ skies %>%
 ```
 
 ## **Chicago Weather Events**
-```{r}
-# As expected, Chicago shows variation throughout the two years with a variety of different patterns. However, Chicago still maintains its days with clear skies as higher than any other weathering event.
-```
+ As expected, Chicago shows variation throughout the two years with a variety of different patterns. However, Chicago still maintains its days with clear skies as higher than any other weathering event.
+
 
 ```{r echo=FALSE}
 skies %>%
@@ -286,9 +268,8 @@ skies %>%
 ```
 
 ## **Mumbai Weather Events** :sun:
-```{r eval=FALSE, include=FALSE}
-# For a majority of the year, Mumbai shows clear skies. Rainy days are not as common as clear skies but appear more frequently than any other weather event or combinations of events.
-```
+- For a majority of the year, Mumbai shows clear skies. Rainy days are not as common as clear skies but appear more frequently than any other weather event or combinations of events.
+
 
 ```{r echo=FALSE}
 skies %>%
@@ -305,10 +286,10 @@ skies %>%
 ```
 
 ## **San Diego Weather Events** :sun:
-```{r eval=FALSE, include=FALSE}
-# San Diego as predicted has a majority of clear skies throughout the two years of data. 
-# They don't call it "Sunny San Diego" for nothing! 
-```
+
+- San Diego as predicted has a majority of clear skies throughout the two years of data. 
+- They don't call it "Sunny San Diego" for nothing! 
+
 
 ```{r echo=FALSE}
 skies %>%
